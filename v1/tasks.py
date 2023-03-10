@@ -35,5 +35,5 @@ def transcribe_audio(key, instance_id):
 @shared_task
 def process_transcription(instance_id):
     t = transcript.objects.get(id=instance_id)
-    t.result_processed = "\n".join(tokenizer.tokenize(t.result_raw))
+    t.result_processed = "<br>".join(tokenizer.tokenize(t.result_raw))
     t.save()
