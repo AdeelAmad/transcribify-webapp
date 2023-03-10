@@ -9,19 +9,23 @@
 </head>
 <body>
 <div class="container">
-    <div class="row text-center mt-3">
+    <div class="row text-center mt-3 mb-5">
         <div class="col">
             <ul class="list-group list-group-horizontal">
                 <li class="list-group-item flex-fill">Transcript ID: {{ object.id }}</li>
                 <li class="list-group-item flex-fill">Uploaded at: {{ object.timestamp }}</li>
                 <li class="list-group-item flex-fill">Language: {{ object.language }}</li>
-                <li class="list-group-item flex-fill">File Location: {{ object.file }}</li>
+                <li class="list-group-item flex-fill">Transcription Method: {{ object.transcription_method }}</li>
             </ul>
+        </div>
+    </div>
+    <div class="row text-center mb-3">
+        <div class="col">
+            <h1>Transcript</h1>
         </div>
     </div>
     <div class="row text-center">
         <div class="col">
-            <h1>Transcript</h1>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="processed-tab" data-bs-toggle="tab"

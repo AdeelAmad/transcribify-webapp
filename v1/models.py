@@ -16,6 +16,7 @@ class transcript(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     language = models.CharField(max_length=2, default='en', blank=True)
+    transcription_method = models.CharField(max_length=5, default='sm-en', blank=True)
     file = models.FileField(upload_to=generate_filename, validators=[FileExtensionValidator(['mp3', 'wav', 'm4a']),
                                                                      FileSizeValidator(2.5*1024*1024)])
     result_raw = models.TextField(blank=True, default='Processing... Check Back Soon\nMost Files Process in 1-2 Minutes')
