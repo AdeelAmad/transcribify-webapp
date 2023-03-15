@@ -22,6 +22,14 @@
 </head>
 <body>
 <div class="container">
+    <div class="row text-center mt-3">
+        <div class="col">
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item flex-fill">Logged in as: {{ user }}</li>
+                <a href="{% url 'upload' %}" class="list-group-item list-group-item-info flex-fill">Home</a>
+            </ul>
+        </div>
+    </div>
     <div class="row text-center mt-3 mb-5">
         <div class="col">
             <ul class="list-group list-group-horizontal">

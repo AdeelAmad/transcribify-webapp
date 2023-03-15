@@ -79,7 +79,7 @@
     <div class="row text-center mt-5">
         <div class="col">
             <h1>WhisperApp</h1>
-            <sub>Alpha 0.3.1</sub>
+            <sub>Alpha 0.3.2</sub>
         </div>
     </div>
     <div class="row text-center border-top border-bottom my-5">
@@ -91,7 +91,7 @@
                     <small>You are currently using the <b>{{ plan }}</b> plan</small>
                     <div class="mb-3 mt-3">
                         <input type="file" name="file" required id="id_file" class="form-control">
-                        <small>.mp3 .wav .m4a only | {{ file_size }} Limit | English only</small>
+                        <small>.mp3 .wav .m4a only | <b>{{ file_size }}</b> Limit | English only</small>
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Upload</button>
                     {% if form.errors %}

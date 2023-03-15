@@ -13,8 +13,8 @@ def upload(request):
         else:
             form.instance.user = None
         if form.is_valid():
-            form.save(commit=False)
-            return redirect('transcript', pk=form.pk)
+            t = form.save()
+            return redirect('transcript', pk=t.pk)
     else:
         form = TranscriptForm()
     file_size = "5MB" if request.user.is_authenticated else "2.5MB"
