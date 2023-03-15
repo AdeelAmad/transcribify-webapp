@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qm_p^)pbxr_dd-k+!!0b2^hjjh9r)o5nsd5g95(37ezvi*mmg)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["transcriptions.agradehost.com", "66.94.113.9"]
+ALLOWED_HOSTS = ["transcriptions.agradehost.com", "66.94.113.9", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'v1.apps.V1Config',
+    'users.apps.UsersConfig',
     'storages',
 ]
 
@@ -141,3 +142,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MAX_FILE_SIZE_NOT_LOGGED_IN = 2.5 * 1024 * 1024  # 2.5MB
+MAX_FILE_SIZE_LOGGED_IN = 5 * 1024 * 1024  # 5MB

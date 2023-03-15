@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import uploadAudio, transcript
+from .views import upload, transcript
 
 urlpatterns = [
-    path('', uploadAudio.as_view(), name='upload'),
-    path('<uuid:pk>/', transcript.as_view(), name='transcript'),
+    path('', upload, name='upload'),
+    path('transcript/<uuid:pk>/', transcript.as_view(), name='transcript'),
 ]
