@@ -20,19 +20,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #f5f5f5;
-        }
-
         .form-signin {
             max-width: 330px;
             padding: 15px;
@@ -57,7 +44,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
+    <div class="row mt-3">
         <div class="col">
             <div class="alert alert-info alert-dismissible fade show" role="alert">
                 WhisperApp is currently in Alpha. As such, there may be bugs and issues.
@@ -65,7 +52,7 @@
             </div>
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mt-3" role="alert">
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
@@ -92,7 +79,7 @@
     <div class="row text-center mt-5">
         <div class="col">
             <h1>WhisperApp</h1>
-            <sub>Alpha 0.3</sub>
+            <sub>Alpha 0.3.1</sub>
         </div>
     </div>
     <div class="row text-center border-top border-bottom my-5">
@@ -107,7 +94,13 @@
                         <small>.mp3 .wav .m4a only | {{ file_size }} Limit | English only</small>
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Upload</button>
-                    {{ form.errors }}
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <small style="color: red"> {{ error }} </small>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </form>
             </main>
         </div>

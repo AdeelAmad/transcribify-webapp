@@ -77,8 +77,12 @@
                     </div>
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                    {% if form.errors %}
+                        <small style="color: red">Please enter a correct username and password. Note that both fields
+                            may be case-sensitive.</small>
+                    {% endif %}
                 </form>
-                <a href="{% url 'login' %}">Already have an account? Login</a>
+                <a href="{% url 'register' %}">Need an account? Sign Up</a>
             </main>
         </div>
     </div>

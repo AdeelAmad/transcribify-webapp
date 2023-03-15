@@ -15,5 +15,6 @@ class TranscriptForm(forms.ModelForm):
             file_size = file.size
             max_file_size = settings.MAX_FILE_SIZE_LOGGED_IN if self.instance.user_id else settings.MAX_FILE_SIZE_NOT_LOGGED_IN
             if file_size > max_file_size:
-                raise forms.ValidationError("File size must be less than %s" % max_file_size)
+                error_message = "File size must be less than 5MB" if self.instance.user_id else "File size must be less than 2.5MB"
+                raise forms.ValidationError(error_message)
         return file

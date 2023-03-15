@@ -66,6 +66,11 @@
                         <input type="text" name="username" maxlength="150" autofocus required id="id_username"
                                class="form-control">
                         <label for="id_username">Username:</label>
+                        {% if form.username.errors %}
+                            {% for error in form.username.errors %}
+                                <small style="color: red">{{ error }}</small>
+                            {% endfor %}
+                        {% endif %}
                         <small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
                     </div>
 
@@ -73,20 +78,37 @@
                         <input type="email" name="email" required id="id_email" class="form-control">
                         <label for="id_email">Email:</label>
                     </div>
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <small style="color: red">{{ error }}</small>
+                        {% endfor %}
+                    {% endif %}
 
                     <div class="form-floating">
                         <input type="password" name="password1" autocomplete="new-password" required id="id_password1"
                                class="form-control">
                         <label for="id_password1">Password:</label>
-                        <small>Your password can't be too similar to your other personal information.</small>
+                        {% if form.password1.errors %}
+                            {% for error in form.password1.errors %}
+                                <small style="color: red">{{ error }}</small>
+                            {% endfor %}
+                        {% endif %}
                     </div>
+
 
                     <div class="form-floating mb-2">
                         <input type="password" name="password2" autocomplete="new-password" required id="id_password2"
                                class="form-control">
                         <label for="id_password2">Confirm Password:</label>
-                        <small>Enter the same password as before, for verification.</small>
+                        {% if form.password2.errors %}
+                            {% for error in form.password2.errors %}
+                                <small style="color: red">{{ error }}</small>
+                            {% endfor %}
+                        {% endif %}
+                        <small>Your password can't be too similar to your other personal information.</small>
+
                     </div>
+
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
                 </form>
