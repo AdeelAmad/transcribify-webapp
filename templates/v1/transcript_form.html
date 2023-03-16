@@ -63,23 +63,19 @@
     <div class="row text-end">
         <div class="col">
             {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">
-                    <button type="button" class="btn btn-outline-secondary">Logout</button>
-                </a>
+                <a href="{% url 'profile' %}" class="btn btn-outline-secondary">Dashboard</a>
+                <a href="{% url 'billing' %}" class="btn btn-outline-secondary">Billing</a>
+                <a href="{% url 'logout' %}" class="btn btn-outline-secondary">Logout</a>
             {% else %}
-                <a href="{% url 'login' %}">
-                    <button type="button" class="btn btn-outline-secondary">Login</button>
-                </a>
-                <a href="{% url 'register' %}">
-                    <button type="button" class="btn btn-outline-secondary">Sign Up</button>
-                </a>
+                <a href="{% url 'login' %}" class="btn btn-outline-secondary">Login</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-secondary">Sign Up</a>
             {% endif %}
         </div>
     </div>
     <div class="row text-center mt-5">
         <div class="col">
             <h1>WhisperApp</h1>
-            <sub>Alpha 0.3.2</sub>
+            <sub>Alpha 0.4</sub>
         </div>
     </div>
     <div class="row text-center border-top border-bottom my-5">
@@ -117,15 +113,16 @@
             <h2>Pricing</h2>
         </div>
         <div class="col">
-            <h3>No Account</h3>
-            <small></small>
+            <h3>Free</h3>
+            <h4>Free</h4>
             <p>Unlimited Transcriptions</p>
             <p>2.5MB File Upload Limit</p>
             <p>English Only</p>
             <p>Basic Model Only</p>
         </div>
         <div class="col">
-            <h3>Free Account</h3>
+            <h3>Basic</h3>
+            <h4>Free</h4>
             <p>Unlimited Transcriptions</p>
             <p>5MB File Upload Limit</p>
             <p>English Only</p>
@@ -134,11 +131,17 @@
         </div>
         <div class="col">
             <h3>Premium</h3>
+            <h4>$4.99/month</h4>
             <p>Unlimited Transcriptions</p>
             <p>50MB File Upload Limit</p>
-            <p>English, Spanish, and French Transcription</p>
-            <p>Advanced Models</p>
-            <button type="button" class="btn btn-secondary disabled">Coming Soon</button>
+            <h5>Coming Soon:</h5>
+            <p class="text-muted">English, Spanish, and French Transcription</p>
+            <p class="text-muted">Advanced Models</p>
+            {% if user.is_authenticated %}
+                {#                <button type="button" class="btn btn-primary" href="{% url 'upgrade' %}">Upgrade</button>#}
+            {% else %}
+                <button type="button" class="btn btn-primary" href="{% url 'register' %}">Sign Up</button>
+            {% endif %}
         </div>
     </div>
 </div>

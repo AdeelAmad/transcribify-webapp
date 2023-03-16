@@ -22,7 +22,17 @@ def register(request):
 
 @login_required
 def profile(request):
-    return redirect('upload')
+    context = {}
+    context['transcripts'] = []
+    for t in transcript.objects.all().filter(user=request.user):
+        id = t.id
+        timestamp = t.timestamp
+        language = t.language
+        transcription_method = t.transcription_method
+
+        context['transcripts'].append({'id': id, 'timestamp': timestamp, 'language': language, 'transcription_method': transcription_method})
+
+    return render(request, 'v1/transcript_list.html', context=context)
 
 def logout(request):
     if request.user.is_authenticated:

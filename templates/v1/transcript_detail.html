@@ -26,7 +26,16 @@
         <div class="col">
             <ul class="list-group list-group-horizontal">
                 <li class="list-group-item flex-fill">Logged in as: {{ user }}</li>
+
                 <a href="{% url 'upload' %}" class="list-group-item list-group-item-info flex-fill">Home</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="list-group-item list-group-item-primary flex-fill">Dashboard</a>
+                    <a href="{% url 'logout' %}" class="list-group-item list-group-item-warning flex-fill">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="list-group-item list-group-item-primary flex-fill">Login</a>
+                    <a href="{% url 'register' %}" class="list-group-item list-group-item-primary flex-fill">Sign Up</a>
+                {% endif %}
             </ul>
         </div>
     </div>

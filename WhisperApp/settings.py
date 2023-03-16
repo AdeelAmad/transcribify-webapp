@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'v1.apps.V1Config',
     'users.apps.UsersConfig',
+    'billing.apps.BillingConfig',
     'storages',
 ]
 
@@ -143,5 +144,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MAX_FILE_SIZE_NOT_LOGGED_IN = 2.5 * 1024 * 1024  # 2.5MB
-MAX_FILE_SIZE_LOGGED_IN = 5 * 1024 * 1024  # 5MB
+MAX_FILE_SIZE_FREE = 2.5 * 1024 * 1024  # 2.5MB
+MAX_FILE_SIZE_BASIC = 5 * 1024 * 1024  # 5MB
+MAX_FILE_SIZE_PREMIUM = 50 * 1024 * 1024  # 50MB

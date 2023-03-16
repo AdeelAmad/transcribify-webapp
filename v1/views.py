@@ -17,8 +17,17 @@ def upload(request):
             return redirect('transcript', pk=t.pk)
     else:
         form = TranscriptForm()
-    file_size = "5MB" if request.user.is_authenticated else "2.5MB"
-    plan = "Free Account" if request.user.is_authenticated else "No Account"
+    if request.user.is_authenticated:
+        if request.user.groups.filter(name='premium').exists():
+            plan = "WhisperApp Premium"
+            file_size = "50MB"
+        else:
+            plan = "WhisperApp Basic"
+            file_size = "5MB"
+    else:
+        plan = "WhisperApp Free"
+        file_size = "2.5MB"
+
     return render(request, 'v1/transcript_form.html', {'form': form, 'file_size': file_size, 'plan': plan})
 
 class transcript(DetailView):
