@@ -21,4 +21,3 @@ def createCustomer(sender, instance, created, **kwargs):
             customer=c.id,
             items=[{"price": "price_1Mm5UhEJU8eUpQthWQKmrqhy"}],
         )
-

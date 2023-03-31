@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import billing
+from .views import billing, webhook
 
 urlpatterns = [
     path('', billing, name='billing'),
+    path('webhook/', webhook, name='webhook')
 ]
