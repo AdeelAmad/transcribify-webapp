@@ -19,13 +19,13 @@ def upload(request):
         form = TranscriptForm()
     if request.user.is_authenticated:
         if request.user.groups.filter(name='premium').exists():
-            plan = "WhisperApp Premium"
+            plan = "Premium"
             file_size = "50MB"
         else:
-            plan = "WhisperApp Basic"
+            plan = "Basic"
             file_size = "5MB"
     else:
-        plan = "WhisperApp Free"
+        plan = "Free"
         file_size = "2.5MB"
 
     return render(request, 'v1/transcript_form.html', {'form': form, 'file_size': file_size, 'plan': plan})
