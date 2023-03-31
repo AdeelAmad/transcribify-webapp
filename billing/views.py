@@ -14,7 +14,7 @@ def billing(request):
     customer_id = customer.objects.get(user=request.user).stripe_id
     session = stripe.billing_portal.Session.create(
         customer=customer_id,
-        return_url='https://transcribify.xyz',
+        return_url='http://transcribify.xyz/',
     )
     return redirect(session.url)
 
