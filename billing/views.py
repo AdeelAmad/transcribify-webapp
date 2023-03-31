@@ -6,8 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import customer
 
-stripe.api_key = "sk_test_51Mm4ynEJU8eUpQthxXeVWS6odrkxdZCBrWS9VAHlvDkD20BMq8IeY3yTJJumsvFudGNRB5u24oDIs3K3abytAJvN0083aRyWdN"
-endpoint_secret = "whsec_4db9b9fe215902582e08e1e166043e42702c1242c86f12b455d6c193a5138630"
+stripe.api_key = "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"
+endpoint_secret = "whsec_dhHtAt0O70YqZ0wpkQJTHdMNMMZ0eWFK"
 
 @login_required
 def billing(request):
@@ -42,9 +42,9 @@ def webhook(request):
 
             new_plan = event['data']['object']['items']['data'][0]['plan']['product']
 
-            if new_plan == "prod_NX9P4Y8zXuji6p":
+            if new_plan == "prod_Nd6NxyC1t5xQYi":
                 user.groups.add(1)
-            elif new_plan == "prod_NX9oGLrdJ79uak":
+            elif new_plan == "prod_Nd6MQC5ZSnyqgJ":
                 user.groups.remove(1)
 
         return HttpResponse(status=200)
