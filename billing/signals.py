@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 import stripe
 from .models import customer
 
-stripe.api_key = "sk_test_51Mm4ynEJU8eUpQthxXeVWS6odrkxdZCBrWS9VAHlvDkD20BMq8IeY3yTJJumsvFudGNRB5u24oDIs3K3abytAJvN0083aRyWdN"
+stripe.api_key = ""
 
 @receiver(post_save, sender=User)
 def createCustomer(sender, instance, created, **kwargs):
@@ -19,5 +19,5 @@ def createCustomer(sender, instance, created, **kwargs):
 
         stripe.Subscription.create(
             customer=c.id,
-            items=[{"price": "price_1Mm5UhEJU8eUpQthWQKmrqhy"}],
+            items=[{"price": ""}],
         )
