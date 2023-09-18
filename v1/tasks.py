@@ -6,7 +6,7 @@ from v1.models import transcript
 import nltk.data
 import boto3
 
-openai.api_key = "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"
+openai.api_key = ""
 model = whisper.load_model('tiny.en')
 tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
@@ -20,8 +20,8 @@ def transcribe_audio(key, instance_id):
                             config=botocore.config.Config(s3={'addressing_style': 'virtual'}),
                             region_name = 'sfo3',
                             endpoint_url = 'https://sfo3.digitaloceanspaces.com',
-                            aws_access_key_id = "DO004L8KLDW8BQWQ4D7C",
-                            aws_secret_access_key = "isj7w1ti26BF6GH8Ltj9El6eUtZodQSs4VrS9eNW6r0")
+                            aws_access_key_id = "",
+                            aws_secret_access_key = "")
 
     url = client.generate_presigned_url(ClientMethod='get_object', Params={'Bucket': 'whisperapp', 'Key': key}, ExpiresIn=3600)
 
